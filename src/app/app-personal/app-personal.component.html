@@ -8,7 +8,7 @@
 
   <div class="w3-row-padding">
     <!-- Repeat for every Personal Detail -->
-    <ng-container *ngFor="let detail of personalDetails | async">
+    <ng-container *ngFor="let detail of personalDetails">
       <div class="w3-col s12 m6 l4 w3-section">
         <a (click)="select(detail)">
           <div class="w3-card w3-hover-shadow w3-padding w3-round" style="width:100%; background-color: #9abce3;">
@@ -28,7 +28,6 @@
     </div>
   </div>
 
-  <app-personal-detail *ngIf="selectedPersonal" ></app-personal-detail>
+  <app-personal-detail *ngIf="selectedPersonal" [detail]="selectedPersonal" (onClose)="closeChildComponent($event)"></app-personal-detail>
 
 </ng-container>
-
