@@ -12,7 +12,7 @@
       <div class="w3-col s12 m6 l4 w3-section">
         <a (click)="select(detail)">
           <div class="w3-card w3-hover-shadow w3-padding w3-round" style="width:100%; background-color: #9abce3;">
-            <li class="w3-padding-16">{{ detail.label }}</li>
+            <li class="w3-padding-16"><span [innerHTML]="detail.label"></span></li>
             <li class="w3-padding-16">{{ detail.value }}</li>
           </div>
         </a>
@@ -27,7 +27,8 @@
       </div>
     </div>
   </div>
-
+  <!-- Two-way binding
+   -->
   <app-personal-detail *ngIf="selectedPersonal" [detail]="selectedPersonal" (onClose)="closeChildComponent($event)"></app-personal-detail>
 
 </ng-container>

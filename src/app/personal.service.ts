@@ -14,7 +14,7 @@ export class PersonalService {
 
   //Url of mockup API
   //getAllUrl = "https://5f80d1fc-25c8-4ea0-8134-44ce5ae7ed79.mock.pstmn.io/getAll";
-  getAllUrl = "http://localhost:8080/getAll";
+  getAllUrl = "http://localhost:8080/personal";
   delayMs = 500;
 
   constructor(private http: HttpClient) { }
@@ -25,7 +25,7 @@ export class PersonalService {
   }
 
   updatePersonal(personal: Personal){
-    
+    return this.http.put<Personal>(this.getAllUrl,personal);
   }
   /* 
     // Fake server get; assume nothing can go wrong

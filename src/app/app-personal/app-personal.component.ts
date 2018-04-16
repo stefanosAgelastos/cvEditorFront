@@ -56,16 +56,25 @@ export class AppPersonalComponent implements OnInit {
   closeChildComponent(toSave: Personal) {
     if (toSave != null) {
       console.log("I should save detail: ", toSave);
-      
+      this.updatePersonal(toSave);
 
     }
-
     this.selectedPersonal = undefined;
   }
 
-     savePersonal(){
-    this.personalService.updatePersonal(this.detail).subscribe();
-  } 
+  /* uses PersonalService for sending PUT request to backend,
+  and updates this.personalDetails */
+  updatePersonal(toSave: Personal) {
+    this.personalService.updatePersonal(toSave).subscribe(data => {
+      this.personalDetails.forEach((p) => {
+        if (p.id === data.id) {
+          p.label = data.label;
+          p.value = data.value;
+          console.log("just replaced values of", p);
+        }
+      });
+    });
+  }
 
   newDetail() {
     /* present an empty modal for the user to enter data */
