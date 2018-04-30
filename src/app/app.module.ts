@@ -8,11 +8,12 @@ import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { AppPersonalComponent } from './app-personal/app-personal.component';
 import { AppContactComponent } from './app-contact/app-contact.component';
-import { PersonalDetailComponent } from './personal-detail/personal-detail.component';
+import { ModalDetailComponent } from './modal-detail/modal-detail.component';
 import { HttpClientModule } from "@angular/common/http";
 
 import {PersonalService} from './personal.service';
 import { ModalDirective } from './modal.directive';
+import { AppDetailComponent } from './app-detail/app-detail.component';
 
 
 @NgModule({
@@ -21,8 +22,9 @@ import { ModalDirective } from './modal.directive';
     AppNavbarComponent,
     AppPersonalComponent,
     AppContactComponent,
-    PersonalDetailComponent,
-    ModalDirective
+    ModalDetailComponent,
+    ModalDirective,
+    AppDetailComponent
   ],
   imports: [
     BrowserModule,

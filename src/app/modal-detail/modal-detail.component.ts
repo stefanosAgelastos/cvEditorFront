@@ -4,11 +4,12 @@ import { Personal } from '../data-model';
 
 
 @Component({
-  selector: 'app-personal-detail',
-  templateUrl: './personal-detail.component.html',
-  styleUrls: ['./personal-detail.component.scss']
+  selector: 'app-modal-detail',
+  templateUrl: './modal-detail.component.html',
+  styleUrls: ['./modal-detail.component.scss']
 })
-export class PersonalDetailComponent implements OnInit {
+
+export class ModalDetailComponent implements OnInit {
 
 
   personalForm: FormGroup;

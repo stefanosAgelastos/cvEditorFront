@@ -1,24 +1,18 @@
-import { Personal } from './../data-model';
 import { PersonalService } from './../personal.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/finally';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Personal } from '../data-model';
 import { ModalDetailComponent } from '../modal-detail/modal-detail.component';
-import { headersToString } from 'selenium-webdriver/http';
-import { personalServiceProvider } from '../personal.service.provider';
 
 @Component({
-  selector: 'app-app-personal',
-  templateUrl: './app-personal.component.html',
-  /* custom provider and factory method,
-  fetches resourses from /personal*/
-  providers: [personalServiceProvider],
-  styleUrls: ['./app-personal.component.scss']
+  selector: 'app-detail',
+  templateUrl: './app-detail.component.html',
+  styleUrls: ['./app-detail.component.scss']
 })
-export class AppPersonalComponent implements OnInit {
+export class AppDetailComponent implements OnInit {
 
-  //injected with service for API data persistence
-  constructor(private personalService: PersonalService) { }
+  constructor() { }
+
+  @Input() personalService : PersonalService;
 
   //list of all personal details
   personalDetails: Personal[];
@@ -112,4 +106,5 @@ export class AppPersonalComponent implements OnInit {
       }
     });
   }
+
 }

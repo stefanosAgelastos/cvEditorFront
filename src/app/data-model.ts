@@ -1,3 +1,6 @@
+export interface Detail{
+    
+}
 export class Personal {
     public id ?: number;
     public label: string;

@@ -4,7 +4,7 @@ import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/delay';
 
 import { Personal, allPersonal } from './data-model';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpEvent } from '@angular/common/http';
 
 @Injectable()
 export class PersonalService {
@@ -14,26 +14,34 @@ export class PersonalService {
 
   //Url of mockup API
   //getAllUrl = "https://5f80d1fc-25c8-4ea0-8134-44ce5ae7ed79.mock.pstmn.io/getAll";
-  getAllUrl = "http://localhost:8080/personal";
+  //personalUrl = "http://localhost:8080/personal";
   delayMs = 500;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private personalUrl: string) { }
 
   getAllPersonal() {
-    return this.http.get<Personal[]>(this.getAllUrl, {responseType:"json"});
+    return this.http.get<Personal[]>(this.personalUrl, { responseType: "json" });
 
   }
 
-  updatePersonal(personal: Personal){
-    return this.http.put<Personal>(this.getAllUrl,personal);
+  updatePersonal(personal: Personal) {
+    return this.http.put<Personal>(this.personalUrl, personal);
   }
+
+  deletePersonal(personal: Personal) {
+
+    return this.http.delete(this.personalUrl + "/" + personal.id, { observe: "response" });
+  }
+
+
   /* 
-    // Fake server get; assume nothing can go wrong
-    getAllPersonal(): Observable<Personal[]>{
-  
-      return of(allPersonal).delay(this.delayMs);
-      // simulate latency with delay
-    }
+  // Fake server get; assume nothing can go wrong
+  getAllPersonal(): Observable<Personal[]>{
+    
+    return of(allPersonal).delay(this.delayMs);
+    // simulate latency with delay
+  }
    */
 
   /*  
