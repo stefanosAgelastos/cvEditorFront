@@ -1,6 +1,6 @@
 <div *ngIf="isLoading" class="w3-container  w3-center w3-text-white w3-padding-32">
     <h1>
-      <b>Loading...</b>
+      <img src="..\assets\img\wait.gif" alt="Please wait, loading..">
     </h1>
   </div>
   
@@ -10,25 +10,35 @@
       <!-- Repeat for every Personal Detail -->
       <ng-container *ngFor="let detail of personalDetails">
         <div class="w3-col s12 m6 l4 w3-section">
-          <div class="w3-card w3-hover-shadow w3-padding w3-round" style="width:100%; background-color: #9abce3;">
-            <a (click)="select(detail)">
-              <li class="w3-padding-16">
-                <span [innerHTML]="detail.label"></span>
-              </li>
-              <li class="w3-padding-16">{{ detail.value }}</li>
-            </a>
-            <button class="w3-button w3-block w3-customRed" (click)="delete(detail)" >- delete</button>
-            </div>
+          <div class="w3-card w3-hover-shadow w3-padding w3-round w3-display-container detailCard" style="width:100%; background-color: #9abce3;">
+            <span class="w3-padding-16">
+              <b> {{ detail.label }}: </b>
+            </span>
+            <br>
+            <span class="w3-padding-16">
+              {{ detail.value }}
+            </span>
+            <br>
+            <span class=" w3-customRed buttonChild material-icons w3-display-bottomright" (click)="delete(detail)"> delete</span>
+            <span class=" w3-customRed buttonChild material-icons w3-display-topright" (click)="select(detail)"> edit</span>
+          </div>
         </div>
       </ng-container>
-      
+  
   
   
       <!-- This is is the ADD NEW card -->
       <div class="w3-col s12 m6 l4 w3-section">
         <a (click)="newDetail()">
-          <div class="w3-card w3-hover-shadow w3-padding w3-round" style="width:100%; background-color: #9abce3;">
-            <img src="..\assets\img\blue-plus-sign-hi.png" style="width:100%">
+          <div class="w3-card w3-hover-shadow w3-padding w3-round w3-display-container detailCard " style="width:100%; background-color: #9abce34d;">
+            <span class="w3-padding-16">
+              <b>   </b>
+            </span>
+            <br>
+            <span class="w3-padding-16">
+            </span>
+            <br>
+            <img src="..\assets\img\blue-plus-sign-hi.png" class="buttonChild w3-display-right" style="width:5%">
           </div>
         </a>
       </div>

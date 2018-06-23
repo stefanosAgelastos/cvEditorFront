@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AuthGuard } from './../auth.guard';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,8 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppNavbarComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private router: Router, private guard: AuthGuard) {
+    guard.itemValue.subscribe((nextValue)=>{
+      this.logedIn = nextValue;
+    })
+  }
+
+  logedIn: boolean;
 
   ngOnInit() {  }
+
+
+  Logout() {
+    localStorage.removeItem('userToken');
+    this.logedIn = false;
+    this.router.navigate(['/login']);
+  }
+
 
 }

@@ -1,11 +1,10 @@
-import { PersonalService } from './../personal.service';
+import { DetailService } from './../detail.service';
 import { Component, OnInit } from '@angular/core';
 import { contactServiceProvider } from '../personal.service.provider';
 
 @Component({
   selector: 'app-contact',
-  template: '<app-detail [personalService]="service"></app-detail > ',
-  
+  templateUrl: './app-contact.component.html',
   /* custom provider and factory method,
   fetches resourses from /contact */
   providers: [contactServiceProvider],
@@ -13,7 +12,8 @@ import { contactServiceProvider } from '../personal.service.provider';
 })
 export class AppContactComponent implements OnInit {
 
-  constructor(private service: PersonalService) { }
+  //injected with service for API data persistence
+  constructor(private service: DetailService) { }
 
   ngOnInit() {
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Personal } from '../data-model';
+import { Detail } from '../data-model/data-model';
 
 
 @Component({
@@ -16,13 +16,13 @@ export class ModalDetailComponent implements OnInit {
 
 
   /* recieves the personal detail object to edit */
-  @Input() detail: Personal;
+  @Input() detail: Detail;
 
   /* event to be emmited to the parent component for closing the DOM object */
-  @Output() onClose = new EventEmitter<Personal>();
+  @Output() onClose = new EventEmitter<Detail>();
 
   /* current Personal Detail being edited */
-  personal: Personal;
+  personal: Detail;
 
   /* injected with a form builder */
   constructor(private fb: FormBuilder) { }
@@ -48,7 +48,7 @@ export class ModalDetailComponent implements OnInit {
   }
 
   /*   trigered when user closes the edit Modal. */
-  close(toSave: Personal) {
+  close(toSave: Detail) {
     //case: no changes, mother component doesnt 
     if (this.personalForm.pristine) {
       this.onClose.emit(null);
@@ -58,9 +58,9 @@ export class ModalDetailComponent implements OnInit {
   }
   /* returns the data from the FormModel to a new Personal instance,
   keeps the id field of the original instance */
-  prepareDetail(): Personal {
+  prepareDetail(): Detail {
     const formModel = this.personalForm.value;
-    const detailToSave: Personal = {
+    const detailToSave: Detail = {
       id: this.detail.id,
       label: formModel.label as string,
       value: formModel.value as string

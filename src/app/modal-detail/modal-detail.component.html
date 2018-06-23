@@ -11,6 +11,9 @@
       <input class="w3-input w3-border-0" type="text" formControlName="label">
 
       <label>Value</label>
+      <div *ngIf="label.required">
+        error
+      </div>
       <input class="w3-input w3-border-0" type="text" formControlName="value">
     </form>
   </div>

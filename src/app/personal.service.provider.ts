@@ -1,25 +1,25 @@
-import { PersonalService } from './personal.service';
+import { DetailService } from './detail.service';
 import { HttpClient } from '@angular/common/http';
 
-var personalUrl = "http://localhost:8080/personal";
-var contactUrl = "http://localhost:8080/contact";
+var personalUrl = "http://54.93.66.2:2300/personal";
+var contactUrl = "http://54.93.66.2:2300/contact";
 
 let personalServiceFactory = (http: HttpClient) => {
-    return new PersonalService(http, personalUrl);
+    return new DetailService(http, personalUrl);
 };
 
 let contactServiceFactory = (http: HttpClient) => {
-    return new PersonalService(http, contactUrl);
+    return new DetailService(http, contactUrl);
 };
 
 export let personalServiceProvider = {
-    provide: PersonalService,
+    provide: DetailService,
     useFactory: personalServiceFactory,
     deps: [HttpClient]
 };
 
 export let contactServiceProvider = {
-    provide: PersonalService,
+    provide: DetailService,
     useFactory: contactServiceFactory,
     deps: [HttpClient]
 };

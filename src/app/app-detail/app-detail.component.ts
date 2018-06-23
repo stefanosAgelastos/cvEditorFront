@@ -1,6 +1,6 @@
-import { PersonalService } from './../personal.service';
+import { DetailService } from './../detail.service';
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { Personal } from '../data-model';
+import { Detail } from '../data-model/data-model';
 import { ModalDetailComponent } from '../modal-detail/modal-detail.component';
 
 @Component({
@@ -12,14 +12,14 @@ export class AppDetailComponent implements OnInit {
 
   constructor() { }
 
-  @Input() personalService : PersonalService;
+  @Input() detailService: DetailService;
 
   //list of all personal details
-  personalDetails: Personal[];
+  personalDetails: Detail[];
   //flag for loading screen
   isLoading = false;
   //selected personal detail, passed to child PersonalDetailComponent
-  selectedPersonal: Personal;
+  selectedPersonal: Detail;
 
 
   @ViewChild(ModalDetailComponent)
@@ -27,13 +27,13 @@ export class AppDetailComponent implements OnInit {
 
   //lifecycle hook
   ngOnInit() {
-    this.getPersonals();
+    this.getDetails();
   }
 
   //calls service observable and retrieves all personal details for displaying
-  getPersonals() {
+  getDetails() {
     this.isLoading = true;
-    this.personalService.getAllPersonal()
+    this.detailService.getAllDetail()
       //todo: errors handling
       .subscribe(data => {
         this.personalDetails = data;
@@ -44,40 +44,46 @@ export class AppDetailComponent implements OnInit {
   }
 
   //called when clicking on personal detail card in template
-  select(detail: Personal) {
+  select(detail: Detail) {
     console.log("selecting ", detail);
     //value different than undefined/null enables the PersonalDetailComponent
     this.selectedPersonal = detail;
   }
 
   //listens for child's event
-  closeChildComponent(toSave: Personal) {
+  closeChildComponent(toSave: Detail) {
     if (toSave != null) {
       console.log("I should save detail: ", toSave);
-      this.updatePersonal(toSave);
+      this.updateDetail(toSave);
 
     }
     this.selectedPersonal = undefined;
   }
 
-  /* uses PersonalService for sending PUT request to backend,
-  and updates this.personalDetails */
-  updatePersonal(toSave: Personal) {
-    this.personalService.updatePersonal(toSave).subscribe(data => {
-      /* if this is an Update then we udpate the view data matching objects by id */
-      this.personalDetails.forEach((p) => {
-        if (p.id === data.id) {
-          p.label = data.label;
-          p.value = data.value;
-          console.log("just replaced values of", p);
-        }
+  /* uses PersonalService for sending PUT or POST request to backend,
+  and updates or creates this.personalDetails */
+  updateDetail(toSave: Detail) {
+    if (toSave.id) {
+      /* if this is an Update we send a PUT request to the backend,
+      and then we udpate the view data matching objects by id */
+      this.detailService.updateDetail(toSave).subscribe(data => {
+        this.personalDetails.forEach((p) => {
+          if (p.id === data.id) {
+            p.label = data.label;
+            p.value = data.value;
+            console.log("just replaced values of", p);
+          }
+        });
       });
-      /* else if the is a Create, backend assigns id and we push the returned Object for viewing  */
-      if (!toSave.id) {
+    }
+    else {
+      /* else if the is a Create, we send a POST request to the backend,
+      and then we add the new Detail to the view */
+      this.detailService.addDetail(toSave).subscribe(data => {
         this.personalDetails.push(data);
         console.log("just added the new personal: ", data);
-      }
-    });
+      });
+    }
   }
 
 
@@ -96,10 +102,10 @@ export class AppDetailComponent implements OnInit {
   }
 
   /* deletes an Personal entry by id */
-  delete(toDelete: Personal) {
+  delete(toDelete: Detail) {
     console.log("Attempting to delete id: " + toDelete.id);
 
-    this.personalService.deletePersonal(toDelete).subscribe(data => {
+    this.detailService.deleteDetail(toDelete).subscribe(data => {
       if (data.ok) {
         console.log("delete succesful, remove from view");
         this.personalDetails.splice(this.personalDetails.findIndex(h => h === toDelete), 1);

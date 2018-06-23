@@ -3,17 +3,26 @@
   id="mySidebar">
   <br>
   <h3 class="w3-padding-64 w3-center">
-    <img src="../assets/img/appLogo.png" height="80" width="80" /> <!-- Todo, put sizing in css for both img -->
+    <img src="../assets/img/appLogo.png" height="80" width="80" />
+    <!-- Todo, put sizing in css for both img -->
   </h3>
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
-  <a routerLink="personal" onclick="w3_close()" class="w3-bar-item w3-button">PERSONAL</a>
-  <a routerLink="contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+  <ng-container *ngIf="logedIn">
+    <a routerLink="personal" onclick="w3_close()" class="w3-bar-item w3-button">PERSONAL</a>
+    <a routerLink="contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    <a routerLink="work" onclick="w3_close()" class="w3-bar-item w3-button">FEATURE</a>
+    <a routerLink="logout" onclick="w3_close()" class="w3-bar-item w3-button w3-text-red" (click)="Logout()">LOGOUT</a>
+  </ng-container>
+  <ng-container *ngIf="!logedIn">
+    <a routerLink='login'  onclick="w3_close()" class="w3-bar-item w3-button">SIGN IN</a>
+    <a routerLink='signup' routerLinkActive='active' onclick="w3_close()" class="w3-bar-item w3-button">SIGN UP</a>
+  </ng-container>
 </nav>
 
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
   <span class="w3-left w3-padding">
-    <img src="../assets/img/appLogo.png" height="70" width="70"/> </span>
+    <img src="../assets/img/appLogo.png" height="70" width="70" /> </span>
   <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
 </header>
 
