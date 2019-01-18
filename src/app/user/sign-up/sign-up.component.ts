@@ -1,3 +1,4 @@
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr'
@@ -35,13 +36,14 @@ export class SignUpComponent implements OnInit {
     this.userService.registerUser(form.value)
       .subscribe((data: any) => {
         console.log(data);
-        
         if (data.success == true) {
           this.resetForm(form);
           this.toastr.success('User registration successful');
         }
-        else
-          this.toastr.error(data.Errors[0]);
+      }, (error: HttpErrorResponse) => {
+        //handling this according to the format of the API error response
+        console.log(error);
+        this.toastr.error(error.error.message);
       });
   }
 

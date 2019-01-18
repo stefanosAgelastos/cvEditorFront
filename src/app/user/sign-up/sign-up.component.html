@@ -1,7 +1,7 @@
 <form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
   <div class="row">
     <div class="input-field col s6">
-      <input class="validate" type="text" name="username" #username="ngModel" [(ngModel)]="user.userName" required>
+      <input class="validate" type="text" name="username" #username="ngModel" [(ngModel)]="user.username" required>
       <label data-error="Required field!">Username</label>
     </div>
     <div class="input-field col s6">

@@ -7,7 +7,7 @@ import { User } from './user.model';
 
 @Injectable()
 export class UserService {
-  readonly rootUrl = 'http://54.93.66.2:2300';
+  readonly rootUrl = '';
   constructor(private http: HttpClient) { }
 
   registerUser(user: User) {

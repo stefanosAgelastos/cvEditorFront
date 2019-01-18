@@ -15,7 +15,6 @@ import { ModalDetailComponent } from './modal-detail/modal-detail.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ToastrModule } from 'ngx-toastr';
 
-import {DetailService} from './detail.service';
 import { ModalDirective } from './modal.directive';
 import { AppDetailComponent } from './app-detail/app-detail.component';
 import { UserComponent } from './user/user.component';
@@ -48,7 +47,7 @@ import { AppWorkComponent } from './app-work/app-work.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [DetailService, UserService, AuthGuard,
+  providers: [  UserService, AuthGuard,
   {
     provide : HTTP_INTERCEPTORS,
     useClass : AuthInterceptor,

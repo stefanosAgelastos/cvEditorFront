@@ -1,8 +1,8 @@
 import { DetailService } from './detail.service';
 import { HttpClient } from '@angular/common/http';
 
-var personalUrl = "http://54.93.66.2:2300/personal";
-var contactUrl = "http://54.93.66.2:2300/contact";
+var personalUrl = "/personal";
+var contactUrl = "/contact";
 
 let personalServiceFactory = (http: HttpClient) => {
     return new DetailService(http, personalUrl);

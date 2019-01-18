@@ -14,8 +14,12 @@
     <a routerLink="logout" onclick="w3_close()" class="w3-bar-item w3-button w3-text-red" (click)="Logout()">LOGOUT</a>
   </ng-container>
   <ng-container *ngIf="!logedIn">
-    <a routerLink='login'  onclick="w3_close()" class="w3-bar-item w3-button">SIGN IN</a>
+    <a routerLink='login' onclick="w3_close()" class="w3-bar-item w3-button">SIGN IN</a>
     <a routerLink='signup' routerLinkActive='active' onclick="w3_close()" class="w3-bar-item w3-button">SIGN UP</a>
+    <a onclick="w3_close()" class="w3-bar-item w3-button" (click)="TestDrive()">
+      <img src="..\assets\img\drive.png" style="max-width:50%;" alt="Test drive app"> 
+    </a>
+    <a href="http://www.stefworks.ml" onclick="w3_close()" class="w3-bar-item w3-button">STEFWORKS.ML</a>
   </ng-container>
 </nav>
 

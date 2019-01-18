@@ -1,6 +1,6 @@
 import { DetailService } from './../detail.service';
 import { Component, OnInit } from '@angular/core';
-import { contactServiceProvider } from '../personal.service.provider';
+import { contactServiceProvider } from '../detail.service.provider'
 
 @Component({
   selector: 'app-contact',
@@ -13,7 +13,7 @@ import { contactServiceProvider } from '../personal.service.provider';
 export class AppContactComponent implements OnInit {
 
   //injected with service for API data persistence
-  constructor(private service: DetailService) { }
+  constructor( public service: DetailService) { }
 
   ngOnInit() {
   }
