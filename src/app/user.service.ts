@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Response } from "@angular/http";
-import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { User } from './user.model';
 
 @Injectable()
 export class UserService {
-  readonly rootUrl = '';
+  readonly rootUrl = 'http://ec2-54-93-66-2.eu-central-1.compute.amazonaws.com';
   constructor(private http: HttpClient) { }
 
   registerUser(user: User) {
