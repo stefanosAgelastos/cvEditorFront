@@ -45,7 +45,7 @@ This is an SPA, made with Angular 5. This project was coded as an exam project f
   
 ### Main features
   
-The application exposes a Sign-in Sign-up page to the public. Authentication is based on JWT tokens, and is implemented buy the Java REST api found [here](https://github.com/stefanosAgelastos/personalRest) After succesfull authentication, it fetches the user's saved resources which are of two types. It allows full CRUD operations on both resource. I am especially proud of using inheritance in order to provide abstract logic for both resources.
+The application exposes a Sign-in Sign-up page to the public. Authentication is based on JWT tokens, and is implemented buy the Java REST api found [here](https://github.com/stefanosAgelastos/personalRest). After succesfull authentication, it fetches the user's saved resources which are of two types. It allows full CRUD operations on both resource. I am especially proud of using inheritance in order to provide abstract logic for both resources.
 </Panel>
 
 <Panel id="3" heading="For Devs" secondaryHeading="Angular scripts" >
