@@ -15,7 +15,7 @@
   
 ### Description
  
-This is an SPA, made with Angular 5. This project was coded as an exam project for 5th semester's **(Spring 2018) elective course: Front End development** at KEA's Computer Science AP. For this project I got an excellent evaluation during the exam. The project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0. You can see the demo, which is hosted on github pages. At the moment there's no server backend, so one cannot login.
+This is an SPA, made with Angular 5. This project was coded as an exam project for 5th semester's **(Spring 2018) elective course: Front End development** at KEA's Computer Science AP. For this project I got an excellent evaluation during the exam. The project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0. You can see the demo, which is hosted on github pages. At the moment there's no server online, so one cannot login.
 
 </InfoPaper>
 
@@ -45,7 +45,7 @@ This is an SPA, made with Angular 5. This project was coded as an exam project f
   
 ### Main features
   
-The application exposes a Sign-in Sign-up page to the public. Authentication is based on JWT tokens, and is implemented buy the Java REST api found [here](https://github.com/stefanosAgelastos/personalRest) After succesfull authentication, it fetches the user's saved resources from which are of tow types. It allows full CRUD operations on both resource. I am especially proud of using inheritance in order to provide abstract logic for both resources.
+The application exposes a Sign-in Sign-up page to the public. Authentication is based on JWT tokens, and is implemented buy the Java REST api found [here](https://github.com/stefanosAgelastos/personalRest) After succesfull authentication, it fetches the user's saved resources which are of two types. It allows full CRUD operations on both resource. I am especially proud of using inheritance in order to provide abstract logic for both resources.
 </Panel>
 
 <Panel id="3" heading="For Devs" secondaryHeading="Angular scripts" >
