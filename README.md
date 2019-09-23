@@ -15,7 +15,7 @@
   
 ### Description
  
-This is an SPA, made with Angular 5. This project was coded as an exam project for 5th semester's **(Spring 2018) elective course: Front End development** at KEA's Computer Science AP. For this project I got an excellent evaluation during the exam. The project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0. You can see the demo, which is hosted on github pages. At the moment there's no server online, so one cannot login.
+This SPA is powered by Angular 5. The application was coded as an exam project for 4th semester's **(Spring 2018) elective course: Front End development** at KEA's Computer Science AP. For this project I got an excellent evaluation during the exam. The code was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0. You can see the demo, which is hosted on github pages. **At the moment there's no server online, so one cannot login.**
 
 </InfoPaper>
 
